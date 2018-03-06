@@ -400,12 +400,12 @@ def makefig_real_data_residue (outputfolder = 'fig201710/realdata/'):
     soft2Res = pd.read_csv(outputfolder+'soft2Res.csv', index_col=0)
     softtRes = pd.read_csv(outputfolder+'softtRes.csv', index_col=0)
     
-    
+    labelstemp = ['pn', 'MOS1', 'MOS2']
     markers = ['o', 's', 'd']
     colors = ['black', 'gray', 'silver']
     ylims = [(-4.25, 3.5), (-4.25, 3.5), (-4.25, 3.5)]
     files = ['hard', 'medium', 'soft']
-    titles = ['Hard band', 'Medium band', 'Soft band']
+    titles = ['Hard band (log-Normal)', 'Medium band (log-Normal)', 'Soft band (log-Normal)']
     plt.figure(figsize=(20, 12))
     for i in np.arange(3):
         ax  = plt.subplot(3, 2, 2*i+1)
@@ -440,7 +440,7 @@ def makefig_real_data_residue (outputfolder = 'fig201710/realdata/'):
             plt.axhline(-3, ls = '--', color='k')
             plt.axhline(2, ls = ':', color='k')
             plt.axhline(-2, ls = ':', color='k')
-            plt.yticks([-4, -3, -2, -1, 0, 1, 2, 3, 4])
+            plt.yticks([-4, -2, 0, 2, 4])
             plt.xticks([])
             plt.ylim((-4.25, 4.25))
             
@@ -452,7 +452,7 @@ def makefig_real_data_residue (outputfolder = 'fig201710/realdata/'):
     colors = ['black', 'gray', 'silver']
     ylims = [(-4.25, 3.5), (-4.25, 3.5), (-4.25, 3.5)]
     files = ['hard', 'medium', 'soft']
-    titles = ['Hard band', 'Medium band', 'Soft band']
+    titles = ['Hard band (log-t)', 'Medium band (log-t)', 'Soft band (log-t)']
     for i in np.arange(3):
         ax  = plt.subplot(3, 2, 2*i+2)
         f = 'realData/' +'/'+files[i] +'.p'
@@ -484,18 +484,18 @@ def makefig_real_data_residue (outputfolder = 'fig201710/realdata/'):
         
         index = np.arange(M)
         for j in np.arange(N):
-            plt.scatter(index, residual[j,:], marker = markers[j], edgecolors='face', color = colors[j])
+            plt.scatter(index, residual[j,:], marker = markers[j], edgecolors='face', color = colors[j], label = labelstemp[j])
             plt.xlim((-1, M))
             plt.axhline(3, ls = '--', color='k')
             plt.axhline(-3, ls = '--', color='k')
             plt.axhline(2, ls = ':', color='k')
             plt.axhline(-2, ls = ':', color='k')
-            plt.yticks([-4, -3, -2, -1, 0, 1, 2, 3, 4])
+            plt.yticks([])
             plt.xticks([])
             plt.ylim((-4.25, 4.25))
         plt.title(titles[i])
         for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):item.set_fontsize(22)
-    
+    plt.legend(ncol = 3, bbox_to_anchor=(-0.28, 3.3, 3, .25), loc=3, fontsize = 18)
     plt.tight_layout()
-    plt.savefig(outputfolder+'residuelogNormalXCALlogtXCAL.pdf')
+    plt.savefig(outputfolder+'residuelogNormalXCALlogtXCAL.pdf', bbox_inches="tight" )
     
