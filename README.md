@@ -20,11 +20,14 @@ IACHEC Calibration Concordance
    
 3. Functions for making figures
 
-   a. generatehistogramfunc(mcmcChainBG, mapResultBG, N, M, B, G, sigma, figsize1 = 20, figsize2 = 6, ncolfig = 5, sigmatheory = float('nan'), savefigname = 'fig.pdf', divisorxaxt0 = 100, divisorxaxt = 100, plotwhich = [1,0,1])
+   a. generatehistogramfunc(mcmcChainBG, mapResultBG, N, M, B, G, sigma, figsize1 = 20, figsize2 = 6, ncolfig = 5, sigmatheory = float('nan'), savefigname = 'fig.pdf', divisorxaxt0 = 100, divisorxaxt = 100, plotwhich = [1,0,1], xtickinputB = [0.85, 1, 1.15], xtickinputS = [0.1, 0.3, 0.5], xtickinputG = [1, 2, 3], fontsizelabel = 18, fontsizetick = 14, ticklength = 6, legend = True)
    
-      This function generates histogram of the posteriors of B, G, sigma. 
+      This function generates histograms of the posteriors of B, G, sigma.
    
    b. makeresidueplot (N, M, Y, mcmcRes, mcmcChain, tRes, tChain, savefigname = 'logtlogncompareSIM.pdf')
    
       This function compares the residues of fitted log-Normal and log-t model.
+      
+    c. comparelognormallogt (N, M, mcmcChain, tChain, B, figsize1 = 20, figsize2 = 6, ncolfig = 5, savefigname = 'logtlogncompareN10M40B5.pdf', legend = True, fontsizelabel = 18, fontsizetick = 14, ticklength = 6, xtickinputB = [4.95, 5, 5.05])
+        This function compares histograms of the posterios of B.
  
